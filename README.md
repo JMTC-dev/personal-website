@@ -1,5 +1,7 @@
 # My personal website
 
+Located at - https://jmtc.dev/
+
 The code for my personal website and blog. It's a simple static site — plain
 HTML and CSS, no framework, no build step, nothing to install.
 
