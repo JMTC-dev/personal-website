@@ -258,7 +258,7 @@ main a:hover { text-decoration-thickness: 2px; }
 
 /* ---- Doodles: faint, clickable easter eggs floating above the hero ---- */
 .doodles {
-  position: absolute; left: 0; right: 0; bottom: 100%; height: 112px;
+  position: absolute; left: 0; right: 0; bottom: 100%; height: 116px;
   pointer-events: none; overflow: visible;
 }
 .doodle {
@@ -271,24 +271,47 @@ main a:hover { text-decoration-thickness: 2px; }
 .doodle:hover { opacity: 0.3; }
 .doodle.is-playing { opacity: 1; }
 
-/* loose cluster, floating in the band just above the headline */
-.p1 { top: 48px; left: 8%; }
-.p3 { top: 16px; left: 24%; }
-.p2 { top: 50px; left: 40%; }
-.p6 { top: 18px; left: 56%; }
-.p5 { top: 46px; left: 72%; }
-.p4 { top: 34px; left: 88%; }
+/* Two-row scatter, hugging the headline — zig-zags high/low across the width,
+   kept low so nothing floats too far above the line. */
+.p6  { top: 78px; left: 2.5%; }   /* duck */
+.p1  { top: 46px; left: 12.6%; }  /* cube */
+.p3  { top: 76px; left: 22.7%; }  /* math */
+.p2  { top: 48px; left: 32.8%; }  /* sword */
+.p10 { top: 78px; left: 42.9%; }  /* cake */
+.p7  { top: 46px; left: 53%; }    /* shield */
+.p8  { top: 78px; left: 63.1%; }  /* barbell */
+.p9  { top: 48px; left: 73.2%; }  /* cabin */
+.p4  { top: 76px; left: 83.3%; }  /* terminal */
+.p5  { top: 48px; left: 93.4%; }  /* trees */
 
 /* Hidden on narrower screens where there isn't room above the hero. */
 @media (max-width: 64rem) { .doodles { display: none; } }
 
 /* ---- Click effects ---- */
 .fx { position: absolute; left: 50%; top: 0; pointer-events: none; }
-.fx-eq, .fx-quack, .fx-code, .fx-shout { white-space: nowrap; }
+.fx-eq, .fx-quack, .fx-code, .fx-shout, .fx-cipher, .fx-rep, .fx-bake { white-space: nowrap; }
 .fx-eq    { top: -10px; font-family: var(--font-serif); font-size: 13px; color: var(--ink); animation: fx-rise 1.5s ease forwards; }
-.fx-quack { top: -15px; background: var(--ink); color: var(--bg); font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 10px; animation: fx-rise 1.3s ease forwards; }
 .fx-code  { top: -13px; background: var(--card); border: 1px solid var(--line); border-radius: 5px; padding: 3px 7px; font-family: ui-monospace, "Consolas", monospace; font-size: 11px; color: var(--ink); animation: fx-rise 1.7s ease forwards; }
-.fx-shout { top: 6px; font-family: var(--font-serif); font-weight: 500; font-size: 15px; letter-spacing: .04em; color: var(--ink); animation: fx-shout 1.4s ease forwards; }
+
+/* Duck — "quack!" spoken aloud: serif italic, wobbling, with little sound arcs.
+   Sword's "FUS RO DAH!" shares this serif voice, just upright and bolder. */
+.fx-quack { top: -16px; font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 16px; color: var(--ink); animation: fx-quack 1.4s ease forwards; }
+.fx-quack .q-wave { display: inline-block; width: 9px; height: 13px; margin-left: 2px; vertical-align: -1px; color: var(--muted); animation: q-wave 1.4s ease forwards; }
+.fx-shout { top: 6px; font-family: var(--font-serif); font-weight: 600; font-size: 15px; letter-spacing: .04em; color: var(--ink); animation: fx-shout 1.4s ease forwards; }
+
+/* Security — ciphertext that decodes (doodles.js scrambles the characters). */
+.fx-cipher { top: -12px; font-family: ui-monospace, "Consolas", monospace; font-size: 11px; letter-spacing: .06em; color: var(--ink); animation: fx-rise 1.6s ease forwards; }
+/* Workout — a rep counter. */
+.fx-rep   { top: -14px; font-family: var(--font-serif); font-weight: 600; font-size: 15px; color: var(--ink); animation: fx-rise 1.2s ease forwards; }
+/* Bake Off — the Star Baker accolade. */
+.fx-bake  { top: -16px; font-family: var(--font-serif); font-style: italic; font-weight: 600; font-size: 14px; color: var(--ink); animation: fx-bake 1.7s ease forwards; }
+.fx-bake .star { color: #e0a92e; font-style: normal; }
+/* Cabin — smoke drifting up from the chimney. */
+.fx-smoke { top: 2px; left: 64%; }
+.fx-smoke i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: var(--muted); opacity: 0; animation: fx-puff 1.4s ease-out forwards; }
+.fx-smoke i:nth-child(1) { animation-delay: 0s; }
+.fx-smoke i:nth-child(2) { animation-delay: .25s; }
+.fx-smoke i:nth-child(3) { animation-delay: .45s; }
 .fx-leaves i { position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; border-radius: 0 60% 0 60%; background: #5e9c54; opacity: 0; animation: fx-leaf 1.5s ease-in forwards; }
 .fx-leaves i:nth-child(1){ --lx:-14px; animation-delay: 0s; }
 .fx-leaves i:nth-child(2){ --lx:11px;  animation-delay: .12s; }
@@ -299,6 +322,10 @@ main a:hover { text-decoration-thickness: 2px; }
 @keyframes fx-rise  { 0%{opacity:0; transform:translate(-50%,4px) scale(.85)} 18%{opacity:1; transform:translate(-50%,-8px) scale(1)} 78%{opacity:1; transform:translate(-50%,-10px)} 100%{opacity:0; transform:translate(-50%,-16px)} }
 @keyframes fx-shout { 0%{opacity:0; transform:translate(-50%,0) scale(.6)} 25%{opacity:1; transform:translate(-50%,-6px) scale(1.18)} 60%{opacity:1; transform:translate(-50%,-12px) scale(1)} 100%{opacity:0; transform:translate(-50%,-46px) scale(1)} }
 @keyframes fx-leaf  { 0%{opacity:.85; transform:translate(-50%,-2px) rotate(0)} 100%{opacity:0; transform:translate(calc(-50% + var(--lx)), 42px) rotate(200deg)} }
+@keyframes fx-quack { 0%{opacity:0; transform:translate(-50%,4px) rotate(0) scale(.8)} 14%{opacity:1; transform:translate(-50%,-6px) rotate(-6deg) scale(1.06)} 34%{transform:translate(-50%,-8px) rotate(5deg)} 54%{transform:translate(-50%,-9px) rotate(-4deg)} 74%{opacity:1; transform:translate(-50%,-11px) rotate(3deg)} 100%{opacity:0; transform:translate(-50%,-16px) rotate(0)} }
+@keyframes q-wave   { 0%,28%{opacity:0} 44%{opacity:.85} 100%{opacity:.15} }
+@keyframes fx-bake  { 0%{opacity:0; transform:translate(-50%,6px) scale(.5)} 20%{opacity:1; transform:translate(-50%,-6px) scale(1.16)} 36%{transform:translate(-50%,-8px) scale(1)} 76%{opacity:1; transform:translate(-50%,-11px)} 100%{opacity:0; transform:translate(-50%,-18px)} }
+@keyframes fx-puff  { 0%{opacity:0; transform:translate(0,0) scale(.4)} 25%{opacity:.5} 100%{opacity:0; transform:translate(5px,-24px) scale(1.7)} }
 
 @media (prefers-reduced-motion: no-preference) {
   .doodle { animation: doodle-float 5.5s ease-in-out infinite; }
@@ -307,15 +334,23 @@ main a:hover { text-decoration-thickness: 2px; }
   .doodle.d-terminal { animation-delay: 1.8s; }
   .doodle.d-trees    { animation-delay: 2.4s; }
   .doodle.d-duck     { animation-delay: 3s; }
-  .doodle.is-active         { animation: doodle-boop 0.5s ease; }
-  .doodle.d-cube.is-active  { animation: cube-solve 0.9s ease; }
-  .doodle.d-duck.is-active  { animation: doodle-bob 0.6s ease; }
-  .doodle.d-sword.is-active { animation: doodle-swing 0.5s ease; }
+  .doodle.d-cake     { animation-delay: 0.9s; }
+  .doodle.d-shield   { animation-delay: 3.6s; }
+  .doodle.d-barbell  { animation-delay: 4.2s; }
+  .doodle.d-cabin    { animation-delay: 4.8s; }
+  .doodle.is-active           { animation: doodle-boop 0.5s ease; }
+  .doodle.d-cube.is-active    { animation: cube-solve 0.9s ease; }
+  .doodle.d-duck.is-active    { animation: doodle-bob 0.6s ease; }
+  .doodle.d-sword.is-active   { animation: doodle-swing 0.5s ease; }
+  .doodle.d-barbell.is-active { animation: doodle-lift 0.75s ease; }
+  .doodle.d-cake.is-active    { animation: doodle-rise 0.7s ease; }
   @keyframes doodle-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
   @keyframes doodle-boop  { 0%{transform:scale(1) rotate(0)} 30%{transform:scale(1.28) rotate(-8deg)} 60%{transform:scale(.96) rotate(6deg)} 100%{transform:scale(1) rotate(0)} }
   @keyframes doodle-bob   { 0%{transform:translateY(0) rotate(0)} 25%{transform:translateY(-7px) rotate(-7deg)} 50%{transform:translateY(0)} 75%{transform:translateY(-4px) rotate(5deg)} 100%{transform:translateY(0) rotate(0)} }
   @keyframes doodle-swing { 0%{transform:rotate(0)} 30%{transform:rotate(-24deg)} 60%{transform:rotate(13deg)} 100%{transform:rotate(0)} }
   @keyframes cube-solve   { 0%{transform:rotate(0); color:var(--ink)} 18%{color:#e74c3c} 38%{color:#3498db} 58%{color:#2ecc71} 78%{color:#f1c40f} 100%{transform:rotate(360deg); color:var(--ink)} }
+  @keyframes doodle-lift  { 0%,100%{transform:translateY(0)} 18%{transform:translateY(-7px)} 36%{transform:translateY(0) scaleY(.94)} 54%{transform:translateY(-7px)} 72%{transform:translateY(0) scaleY(.97)} }
+  @keyframes doodle-rise  { 0%{transform:translateY(0) scale(1)} 35%{transform:translateY(-4px) scale(1.13)} 70%{transform:translateY(0) scale(1)} 100%{transform:translateY(0) scale(1)} }
 }
 
 hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
