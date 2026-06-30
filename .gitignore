@@ -8,3 +8,10 @@ desktop.ini
 
 # Local-only notes (the full/original README, kept for reference)
 NOTES.md
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
