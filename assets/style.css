@@ -260,6 +260,7 @@ main a:hover { text-decoration-thickness: 2px; }
 .doodles {
   position: absolute; left: 0; right: 0; bottom: 100%; height: 116px;
   pointer-events: none; overflow: visible;
+  margin-bottom: 10px;
 }
 .doodle {
   position: absolute; width: 32px; height: 32px;
