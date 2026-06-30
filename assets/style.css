@@ -300,7 +300,7 @@ html.loading::after {
 .p2 { top: 50px; left: 40%; }
 .p6 { top: 18px; left: 56%; }
 .p5 { top: 46px; left: 72%; }
-.p4 { top: 16px; left: 88%; }
+.p4 { top: 34px; left: 88%; }
 
 /* Hidden on narrower screens where there isn't room above the hero. */
 @media (max-width: 64rem) { .doodles { display: none; } }

@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /writing/post-template.html
 
-# Replace example.com with your real domain once it's live.
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://jmtc.dev/sitemap.xml
