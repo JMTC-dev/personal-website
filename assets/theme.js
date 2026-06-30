@@ -13,20 +13,6 @@
     root.setAttribute("data-theme", saved);
   }
 
-  /* Page-load reveal: mark JS present, hold the page until everything has
-     loaded, then fade it in. With JS off, none of this runs and the CSS
-     leaves the page fully visible. A timeout guards against a stuck load. */
-  root.classList.add("js", "loading");
-  var revealed = false;
-  function reveal() {
-    if (revealed) return;
-    revealed = true;
-    root.classList.remove("loading");
-    root.classList.add("loaded");
-  }
-  window.addEventListener("load", reveal);
-  setTimeout(reveal, 3000);
-
   function current() {
     var attr = root.getAttribute("data-theme");
     if (attr) return attr;

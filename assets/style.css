@@ -236,35 +236,12 @@ main a:hover { text-decoration-thickness: 2px; }
 .feature-list li { position: relative; padding-left: 1.1rem; margin: 0.55rem 0; color: var(--body); }
 .feature-list li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 5px; height: 5px; border-radius: 50%; background: var(--faint); }
 
-/* ---- Page-load reveal, gentle entrance, smooth page transitions ---- */
-/* Hold the page until everything has loaded (only when JS is present), then
-   fade it in. With JS off there's no .js class, so the page just shows. */
-html.js body > * { opacity: 0; }
-html.js.loaded body > * { opacity: 1; transition: opacity 0.45s ease; }
-
-/* Loading spinner — only appears if the load takes longer than a moment. */
-html.loading::after {
-  content: "";
-  position: fixed; top: 50%; left: 50%;
-  width: 26px; height: 26px; margin: -13px 0 0 -13px;
-  border: 2px solid var(--line); border-top-color: var(--nav); border-radius: 50%;
-  opacity: 0; z-index: 50;
-  animation: spin 0.7s linear infinite, loaderIn 0.2s ease 0.25s forwards;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes loaderIn { to { opacity: 1; } }
-
+/* ---- Gentle entrance ---- */
+/* A plain fade-in on load. Deliberately no "hide until fully loaded" reveal and
+   no cross-document @view-transition — both flickered on iOS WebKit. */
 @media (prefers-reduced-motion: no-preference) {
-  html.loaded .fade-in { animation: fadeUp 0.45s ease both; }
+  .fade-in { animation: fadeUp 0.5s ease both; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-  /* Cross-document fade when navigating. Pure CSS; unsupported browsers just navigate. */
-  @view-transition { navigation: auto; }
-}
-
-/* Reduced motion: skip the hold and spinner, show content immediately. */
-@media (prefers-reduced-motion: reduce) {
-  html.js body > * { opacity: 1; }
-  html.loading::after { display: none; }
 }
 
 /* Utility */
