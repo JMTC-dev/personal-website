@@ -246,6 +246,24 @@ main a:hover { text-decoration-thickness: 2px; }
 .feature-list li { position: relative; padding-left: 1.1rem; margin: 0.55rem 0; color: var(--body); }
 .feature-list li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 5px; height: 5px; border-radius: 50%; background: var(--faint); }
 
+/* ---- Content tables + dividers (for pages made with the block builder) ---- */
+.post-body table, .project-page table {
+  width: 100%; border-collapse: collapse; margin: 1.6rem 0;
+  font-size: 0.95rem; line-height: 1.5;
+}
+.post-body th, .post-body td,
+.project-page th, .project-page td {
+  padding: 0.55rem 0.8rem; text-align: left; vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+.post-body th, .project-page th { font-weight: 600; color: var(--ink); background: var(--card); }
+.post-body tr:last-child td, .project-page tr:last-child td { border-bottom: 0; }
+
+.post-body hr, .project-page hr {
+  border: 0; height: 1px; width: 6rem; max-width: 40%;
+  background: var(--line); margin: 2.2rem auto;
+}
+
 /* ---- Gentle entrance ---- */
 /* A plain fade-in on load. Deliberately no "hide until fully loaded" reveal and
    no cross-document @view-transition — both flickered on iOS WebKit. */
