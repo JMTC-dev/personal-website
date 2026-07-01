@@ -2,7 +2,8 @@
 <!--
   HOW TO WRITE A NEW POST
   1. Copy this file to writing/your-post-slug.html (lowercase, dashes-for-spaces).
-  2. Edit the <title>, the <meta name="description">, the kicker date, and the title.
+  2. Edit the <title>, <meta name="description">, the canonical + og:url (your slug),
+     the og:title, the kicker date, and the heading. Delete the noindex line to publish.
   3. Write your post inside the post-body div: use <p> for paragraphs,
      <h2> or <h3> for sub-headings, <blockquote> for quotes, <ul>/<ol> for lists.
      The first line uses class="post-lead" so it reads a touch larger.
@@ -18,12 +19,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>POST TITLE — Jack Casey</title>
   <meta name="description" content="One-sentence summary of this post.">
+  <link rel="canonical" href="https://jmtc.dev/writing/your-post-slug.html">
+  <meta name="author" content="Jack Casey">
+  <meta name="theme-color" content="#faf8f3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Jack Casey">
+  <meta property="og:title" content="Post title">
+  <meta property="og:description" content="One-sentence summary of this post.">
+  <meta property="og:url" content="https://jmtc.dev/writing/your-post-slug.html">
+  <meta property="og:image" content="https://jmtc.dev/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Remove this noindex line once the post is ready to go public. -->
   <meta name="robots" content="noindex">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/fonts/source-serif-4-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/theme.js"></script>
+  <!-- Structured data. Update headline, description, the dates (YYYY-MM-DD), and the URL.
+       datePublished = when it goes live; dateModified = last meaningful edit (same at first). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Post title",
+    "description": "One-sentence summary of this post.",
+    "datePublished": "2026-01-01",
+    "dateModified": "2026-01-01",
+    "author": { "@type": "Person", "name": "Jack Casey", "url": "https://jmtc.dev/" },
+    "image": "https://jmtc.dev/assets/og.png",
+    "mainEntityOfPage": "https://jmtc.dev/writing/your-post-slug.html"
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
