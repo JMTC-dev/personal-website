@@ -100,4 +100,17 @@
       d._fxTimer = null;
     }, 1900);
   });
+
+  /* Footer secret: clicking the copyright pops a little heart. */
+  document.addEventListener("click", function (e) {
+    var c = e.target.closest(".cpy");
+    if (!c) return;
+    var old = c.querySelector(".fx-heart");
+    if (old) old.remove();
+    var h = document.createElement("span");
+    h.className = "fx-heart";
+    h.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/></svg>';
+    c.appendChild(h);
+    setTimeout(function () { if (h.parentNode) h.remove(); }, 1300);
+  });
 })();
